@@ -1,0 +1,49 @@
+{
+  "private": true,
+  "name": "playnode",
+  "version": "0.0.1",
+  "dependencies": {
+    "dompurify": "^0.9.0",
+    "lodash.clone": "^4.5.0",
+    "lodash.merge": "^4.6.0",
+    "object.values": "^1.0.4",
+    "pako": "^1.0.5",
+    "prop-types": "^15.5.10",
+    "radium": "^0.19.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-key-handler": "^0.3.0",
+    "react-router-dom": "^4.1.2",
+    "react-waypoint": "^7.0.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "http-server": "^0.10.0",
+    "npm-run-all": "^4.0.2",
+    "trash-cli": "^1.4.0",
+    "webpack": "^3.3.0"
+  },
+  "scripts": {
+    "quick-start": "npm-run-all build --parallel serve build:watch",
+    "build": "run-s clean:all webpack",
+    "build:production": "run-s clean:all babel webpack:production clean:es5",
+    "build:watch": "run-s clean:all webpack:watch",
+    "serve": "http-server -o",
+    "babel": "babel src --out-dir es5",
+    "webpack": "webpack",
+    "webpack:production": "webpack --config webpack.prod.config.js",
+    "webpack:watch": "webpack --watch",
+    "clean:all": "trash public/dist es5",
+    "clean:es5": "trash es5"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  }
+}

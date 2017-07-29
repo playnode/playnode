@@ -1,0 +1,27 @@
+{
+  "displayName": "Playnode",
+  "firstName": "",
+  "lastName": "",
+  "city": "",
+  "country": "",
+  "avatar": "images/profile-avatar-200x200.png",
+  "banner": "images/profile-banner-1240x260.jpg",
+  "description": "Plain-text info",
+  "infoHtml": "HTML-formatted info",
+  "links": [
+    {
+      "title": "Playnode.org",
+      "href": "http://playnode.org/"
+    }
+  ],
+  "tracks": [
+    {
+      "artist": "Steven Robertson",
+      "title": "Test",
+      "path": "test",
+      "stream": "test.mp3",
+      "duration": 0,
+      "waveform": ""
+    }
+  ]
+}
