@@ -25,20 +25,20 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path='/' render={(props) => (
                         <Profile
-                            banner={this.props.data.banner}
-                            avatar={this.props.data.avatar}
                             displayName={this.props.data.displayName}
                             firstName={this.props.data.firstName}
                             lastName={this.props.data.lastName}
                             city={this.props.data.city}
                             country={this.props.data.country}
+                            avatar={this.props.data.avatar}
+                            banner={this.props.data.banner}
                             description={this.props.data.description}
-                            feedUrl={this.props.data.feedUrl}
-                            itunesUrl={this.props.data.itunesUrl}
                             infoHtml={this.props.data.infoHtml}
                             links={this.props.data.links}
-                            spotlight={this.props.data.spotlight}
+                            itunesUrl={this.props.data.itunesUrl}
+                            feedUrl={this.props.data.feedUrl}
                             tracks={this.props.data.tracks}
+                            spotlight={this.props.data.spotlight}
                             currentTrack={this.state.currentTrack}
                             playState={this.state.playState}
                             onPlayPause={(track) => {

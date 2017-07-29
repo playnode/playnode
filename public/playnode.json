@@ -14,10 +14,26 @@
       "href": "http://playnode.org/"
     }
   ],
+  "itunesUrl": "",
+  "feedUrl": "",
+  "podcastData": {
+    "siteUrl": "http://directbass.com/",
+    "feedImage": "images/podcast-large.jpg",
+    "ownerName": "Steven Robertson",
+    "ownerEmail": "steve@playnode.net",
+    "copyright": "All rights reserved",
+    "language": "en",
+    "category": "Music",
+    "explicit": "no"
+  },
+  "spotlight": [
+
+  ],
   "tracks": [
     {
       "artist": "Steven Robertson",
       "title": "Test",
+      "pubDate": "Sat, 24 Jun 2017 13:21:15 GMT",
       "path": "test",
       "stream": "test.mp3",
       "duration": 0,
