@@ -109,6 +109,7 @@ Profile.propTypes = {
     currentTrack: PropTypes.object,
     playState: PropTypes.oneOf(values(PlayState)).isRequired,
     onPlayPause: PropTypes.func,
+    onSeek: PropTypes.func,
     onWaveform: PropTypes.func,
 };
 
