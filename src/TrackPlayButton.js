@@ -25,13 +25,12 @@ class TrackPlayButton extends React.Component {
         }
         return (
             <div style={styles.component}>
-                <button style={styles.button}
-                        onClick={() => onPlayPause && onPlayPause()}>
-                    <img src={img}
-                         width={`${buttonSize}px`}
-                         height={`${buttonSize}px`}
-                    />
-                </button>
+                <img src={img}
+                     style={styles.button}
+                     width={`${buttonSize}px`}
+                     height={`${buttonSize}px`}
+                     onClick={() => onPlayPause && onPlayPause()}
+                />
             </div>
         );
     }
