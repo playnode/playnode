@@ -11,11 +11,6 @@ npm install
 npm run quick-start
 ```
 
-## Demo
-
-A demo site featuring music by the developer is available at
-[kerrknoll.com](http://kerrknoll.com/)
-
 ## License
 
 MIT
