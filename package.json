@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "playnode",
+  "name": "playnode-one",
   "version": "0.0.1",
   "dependencies": {
     "dompurify": "^0.9.0",
