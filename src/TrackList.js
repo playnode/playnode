@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Waypoint from "react-waypoint";
+import {Waypoint} from "react-waypoint";
 import Track from "./Track";
 import values from "object.values";
 import PlayState from "./PlayState";

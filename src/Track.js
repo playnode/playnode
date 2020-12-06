@@ -73,7 +73,7 @@ Track.propTypes = {
     duration: PropTypes.number,
     position: PropTypes.number,
     waveform: PropTypes.string,
-    playState: React.PropTypes.oneOf(values(PlayState)).isRequired,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
     onPlayPause: PropTypes.func,
     onSeek: PropTypes.func,
     onWaveform: PropTypes.func,

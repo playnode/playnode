@@ -96,7 +96,7 @@ export default class TrackWaveform extends React.Component {
         this.component.removeEventListener('click', this.onClick);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
 
         // This method is only here to load waveform when loading,
         // when waveform data is not supplied as a prop initially.
@@ -168,7 +168,7 @@ export default class TrackWaveform extends React.Component {
 }
 
 TrackWaveform.propTypes = {
-    playState: React.PropTypes.oneOf(values(PlayState)).isRequired,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
     waveform: PropTypes.string,
     stream: PropTypes.string,
     barWidth: PropTypes.number,

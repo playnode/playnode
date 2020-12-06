@@ -1,25 +1,34 @@
-module.exports = [
-    {
-        entry: './src/App',
+module.exports = (env, _) => {
+    const isProduction = env && env.production ? env.production : false;
+
+    return {
+        mode: isProduction ? 'production' : 'development',
+        devtool: isProduction ? false : 'source-map',
         output: {
             path: __dirname + '/public/dist',
             filename: 'playnode.js'
         },
-        devtool: 'source-map',
+        entry: './src/App',
         module: {
-            loaders: [
+            rules: [
                 {
                     test: /\.jsx?$/,
-                    loader: 'babel-loader',
                     exclude: /node_modules/,
-                    query: {
-                        presets: [
-                            'es2015',
-                            'react'
-                        ]
+                    use: {
+                        loader: "babel-loader",
+                        options: {
+                            presets: [
+                                "@babel/preset-env",
+                                "@babel/preset-react"
+                            ]
+                        }
                     }
                 }
             ]
-        }
-    }
-];
+        },
+        performance: {hints: false},
+        watchOptions: {},
+        resolve: {},
+        node: {}
+    };
+}

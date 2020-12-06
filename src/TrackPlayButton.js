@@ -39,7 +39,7 @@ class TrackPlayButton extends React.Component {
 export default Radium(TrackPlayButton);
 
 TrackPlayButton.propTypes = {
-    playState: React.PropTypes.oneOf(values(PlayState)).isRequired,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
     onPlayPause: PropTypes.func,
 };
 
