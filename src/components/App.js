@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Radium from "radium";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import TrackSound from "./TrackSound";
 import Profile from "./Profile";
 import PlayState from "./PlayState";
@@ -23,7 +22,7 @@ class App extends React.Component {
         return (
             <Radium.StyleRoot>
                 <Switch>
-                    <Route exact path='/' render={(props) => (
+                    <Route exact path='/' render={(_) => (
                         <Profile
                             displayName={this.props.data.displayName}
                             firstName={this.props.data.firstName}
@@ -56,7 +55,7 @@ class App extends React.Component {
                             }}
                         />
                     )}/>
-                    <Route exact path="/stream" render={(props) => (
+                    <Route exact path="/stream" render={(_) => (
                         <div>Stream</div>
                     )}/>
                     <Route exact path="/playlist/:id" render={(props) => (
@@ -185,15 +184,4 @@ App.propTypes = {
     data: PropTypes.object.isRequired,
 };
 
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'playnode.json', true);
-xhr.onload = () => {
-    if (xhr.status === 200) {
-        ReactDOM.render(
-            <Router>
-                <App data={JSON.parse(xhr.responseText)}/>
-            </Router>,
-            document.getElementById('root'));
-    }
-};
-xhr.send();
+export default App;

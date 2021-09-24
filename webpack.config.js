@@ -12,7 +12,7 @@ module.exports = (env, _) => {
             //     type: 'umd',
             // }
         },
-        entry: './src/App',
+        entry: './src/index',
         module: {
             rules: [
                 {
