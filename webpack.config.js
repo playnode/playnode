@@ -23,6 +23,18 @@ module.exports = (env, _) => {
                             ]
                         }
                     }
+                },
+                {
+                    test: /\.(gif|png|jpe?g|svg)$/,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'assets/images/'
+                            }
+                        }
+                    ]
                 }
             ]
         },

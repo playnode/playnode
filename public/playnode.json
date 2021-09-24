@@ -1,5 +1,5 @@
 {
-  "displayName": "Playnode",
+  "displayName": "Playnode Music Website",
   "firstName": "",
   "lastName": "",
   "city": "",
@@ -7,7 +7,7 @@
   "avatar": "images/profile-avatar-200x200.png",
   "banner": "images/profile-banner-1240x260.jpg",
   "description": "Plain-text info",
-  "infoHtml": "HTML-formatted info",
+  "infoHtml": "<i>HTML-formatted info</i>",
   "links": [
     {
       "title": "Playnode.org",
@@ -17,14 +17,14 @@
   "itunesUrl": "",
   "feedUrl": "",
   "podcastData": {
-    "siteUrl": "http://directbass.com/",
-    "feedImage": "images/podcast-large.jpg",
-    "ownerName": "Steven Robertson",
-    "ownerEmail": "steve@playnode.net",
-    "copyright": "All rights reserved",
-    "language": "en",
-    "category": "Music",
-    "explicit": "no"
+    "siteUrl": "",
+    "feedImage": "",
+    "ownerName": "",
+    "ownerEmail": "",
+    "copyright": "",
+    "language": "",
+    "category": "",
+    "explicit": ""
   },
   "spotlight": [
 

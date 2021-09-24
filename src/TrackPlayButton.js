@@ -3,6 +3,9 @@ import PropTypes from "prop-types";
 import Radium from "radium";
 import values from "object.values";
 import PlayState from "./PlayState";
+import PlayIcon from "./assets/circle-play.svg";
+import PauseIcon from "./assets/circle-pause.svg";
+import LoadingIcon from "./assets/circle-loading.svg";
 
 class TrackPlayButton extends React.Component {
     render() {
@@ -12,15 +15,15 @@ class TrackPlayButton extends React.Component {
             case PlayState.Initial:
             case PlayState.Paused:
             case PlayState.Finished:
-                img = 'images/circle-play.svg';
+                img = PlayIcon;
                 break;
             case PlayState.Playing:
-                img = 'images/circle-pause.svg';
+                img = PauseIcon;
                 break;
             case PlayState.Loading:
             case PlayState.Changing:
             default:
-                img = 'images/circle-loading.svg';
+                img = LoadingIcon;
                 break;
         }
         return (
