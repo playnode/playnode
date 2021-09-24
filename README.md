@@ -5,7 +5,7 @@ Browser JS to render a music website from JSON data description.
 Development quick-start:
 
 ```
-git clone https://github.com/playnode/playnode.git
+git clone https://github.com/playnode/music-website.git
 cd playnode
 npm install
 npm run quick-start
@@ -15,7 +15,7 @@ npm run quick-start
 
 MIT License
 
-Copyright (c) 2017 Steven Robertson <steverobertson@gmail.com>
+Copyright (c) 2021 Steven Robertson <steverobertson@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
