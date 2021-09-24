@@ -22,10 +22,10 @@
     "@babel/preset-env": "^7.15.6",
     "@babel/preset-react": "^7.14.5",
     "babel-loader": "^8.2.2",
-    "live-server": "^1.2.1",
+    "http-server": "^13.0.2",
     "npm-run-all": "^4.1.5",
     "trash-cli": "^4.0.0",
-    "webpack": "^4.46.0",
+    "webpack": "^5.54.0",
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
@@ -33,7 +33,7 @@
     "build": "run-s clean:all webpack",
     "build:production": "run-s clean:all babel webpack:production clean:es5",
     "build:watch": "run-s clean:all webpack:watch",
-    "serve": "live-server public --entry-file=index.html --host=localhost --port=8088",
+    "serve": "http-server public --port=8088",
     "babel": "babel src --out-dir es5",
     "webpack": "webpack",
     "webpack:production": "webpack --env.production",
