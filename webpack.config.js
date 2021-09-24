@@ -6,7 +6,11 @@ module.exports = (env, _) => {
         devtool: isProduction ? false : 'source-map',
         output: {
             path: __dirname + '/public/dist',
-            filename: 'playnode.js'
+            filename: 'playnode-music-website.js',
+            // library: {
+            //     name: 'playnodeMusicWebsite',
+            //     type: 'umd',
+            // }
         },
         entry: './src/App',
         module: {
@@ -31,7 +35,7 @@ module.exports = (env, _) => {
                             loader: 'file-loader',
                             options: {
                                 name: '[name].[ext]',
-                                outputPath: 'assets/images/'
+                                outputPath: 'assets/'
                             }
                         }
                     ]

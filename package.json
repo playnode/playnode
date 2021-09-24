@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "playnode",
+  "name": "playnode-music-website",
   "version": "0.0.1",
   "dependencies": {
     "dompurify": "^2.3.3",
