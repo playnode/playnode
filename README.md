@@ -18,7 +18,7 @@ npm run start
 
 ## License
 
-[Public Domain License](./LICENSE)
+[Unlicense (Public Domain) License](./LICENSE)
 
 **You should remove or replace this license on your fork** of this example project.
 Note that this example project is intended to be forked, and be provided under an
