@@ -4,8 +4,8 @@
   "lastName": "",
   "city": "",
   "country": "",
-  "avatar": "images/profile-avatar-200x200.png",
-  "banner": "images/profile-banner-1240x260.jpg",
+  "avatar": "/images/profile-avatar-200x200.png",
+  "banner": "/images/profile-banner-1240x260.jpg",
   "description": "Plain-text info",
   "infoHtml": "<i>HTML-formatted info</i>",
   "links": [
@@ -35,7 +35,7 @@
       "title": "Test",
       "pubDate": "Sat, 24 Jun 2017 13:21:15 GMT",
       "path": "test",
-      "stream": "audio/test.mp3",
+      "stream": "/audio/test.mp3",
       "duration": 0,
       "waveform": ""
     }
