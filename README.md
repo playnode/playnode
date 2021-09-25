@@ -8,7 +8,7 @@ Development quick-start:
 git clone https://github.com/playnode/react-music-website.git
 cd react-music-website
 npm install
-npm run quick-start
+npm run start
 ```
 
 ## License
