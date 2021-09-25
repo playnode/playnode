@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { App } from "@playnode/music-website";
+import { App } from "@playnode/react-music-components";
 
 const xhr = new XMLHttpRequest();
 xhr.open('GET', 'playnode.json', true);
