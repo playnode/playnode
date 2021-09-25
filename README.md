@@ -20,7 +20,6 @@ npm run start
 
 [Public Domain License](./LICENSE)
 
-You should remove or replace this license on your fork of this example project.
-
-This example project is intended to be forked, and be provided under an
+**You should remove or replace this license on your fork** of this example project.
+Note that this example project is intended to be forked, and be provided under an
 appropriate license and/or copyright notice of your own.
