@@ -6,7 +6,7 @@ Development quick-start:
 
 ```
 git clone https://github.com/playnode/music-website-example.git
-cd playnode
+cd music-website-example
 npm install
 npm run quick-start
 ```
