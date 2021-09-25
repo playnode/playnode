@@ -6,11 +6,7 @@ module.exports = (env, _) => {
         devtool: isProduction ? false : 'source-map',
         output: {
             path: __dirname + '/public/dist',
-            filename: 'playnode-music-website.js',
-            // library: {
-            //     name: 'playnodeMusicWebsite',
-            //     type: 'umd',
-            // }
+            filename: 'playnode.js',
         },
         entry: './src/index',
         module: {
