@@ -3,17 +3,9 @@
   "name": "playnode-music-website-example",
   "version": "0.0.1",
   "dependencies": {
-    "dompurify": "^2.3.3",
-    "lodash.clone": "^4.5.0",
-    "lodash.merge": "^4.6.2",
-    "object.values": "^1.1.4",
-    "pako": "^2.0.4",
-    "radium": "^0.26.1",
-    "react": "^17.0.2",
+    "@playnode/music-website": "^0.0.3",
     "react-dom": "^17.0.2",
-    "react-key-handler": "^1.1.0",
-    "react-router-dom": "^5.3.0",
-    "react-waypoint": "^10.1.0"
+    "react-router-dom": "^5.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
