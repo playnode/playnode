@@ -1,0 +1,8 @@
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+}
+
+.github-fork-ribbon:before {
+    background-color: #f80;
+}
