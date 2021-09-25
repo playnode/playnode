@@ -6,7 +6,7 @@ import config from './playnode.json';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App data={config}/>,
+        <App data={config}/>
     </React.StrictMode>,
     document.getElementById('root')
 );
