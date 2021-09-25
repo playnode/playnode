@@ -35,7 +35,7 @@
       "title": "Test",
       "pubDate": "Sat, 24 Jun 2017 13:21:15 GMT",
       "path": "test",
-      "stream": "test.mp3",
+      "stream": "audio/test.mp3",
       "duration": 0,
       "waveform": ""
     }
