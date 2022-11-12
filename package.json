@@ -36,9 +36,9 @@
     "build:watch": "run-s clean:all webpack:watch",
     "serve": "http-server public --port=8088",
     "babel": "babel src --out-dir es5",
-    "webpack": "webpack",
-    "webpack:production": "webpack --env.production",
-    "webpack:watch": "webpack --watch",
+    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "webpack:production": "NODE_OPTIONS=--openssl-legacy-provider webpack --env.production",
+    "webpack:watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
     "clean:all": "trash public/dist es5",
     "clean:es5": "trash es5"
   },
