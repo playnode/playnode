@@ -7,44 +7,42 @@ import PlayIcon from "../assets/circle-play.svg";
 import PauseIcon from "../assets/circle-pause.svg";
 import LoadingIcon from "../assets/circle-loading.svg";
 
-class TrackPlayButton extends React.Component {
-    render() {
-        const onPlayPause = this.props.onPlayPause;
-        let img;
-        switch (this.props.playState) {
-            case PlayState.Initial:
-            case PlayState.Paused:
-            case PlayState.Finished:
-                img = PlayIcon;
-                break;
-            case PlayState.Playing:
-                img = PauseIcon;
-                break;
-            case PlayState.Loading:
-            case PlayState.Changing:
-            default:
-                img = LoadingIcon;
-                break;
-        }
-        return (
-            <div style={styles.component}>
-                <img src={img}
-                     style={styles.button}
-                     width={`${buttonSize}px`}
-                     height={`${buttonSize}px`}
-                     onClick={() => onPlayPause && onPlayPause()}
-                />
-            </div>
-        );
-    }
-}
-
-export default Radium(TrackPlayButton);
-
 TrackPlayButton.propTypes = {
     playState: PropTypes.oneOf(values(PlayState)).isRequired,
     onPlayPause: PropTypes.func,
 };
+
+function TrackPlayButton(props) {
+    const onPlayPause = props.onPlayPause;
+    let img;
+    switch (props.playState) {
+        case PlayState.Initial:
+        case PlayState.Paused:
+        case PlayState.Finished:
+            img = PlayIcon;
+            break;
+        case PlayState.Playing:
+            img = PauseIcon;
+            break;
+        case PlayState.Loading:
+        case PlayState.Changing:
+        default:
+            img = LoadingIcon;
+            break;
+    }
+    return (
+        <div style={styles.component}>
+            <img src={img}
+                 style={styles.button}
+                 width={`${buttonSize}px`}
+                 height={`${buttonSize}px`}
+                 onClick={() => onPlayPause && onPlayPause()}
+            />
+        </div>
+    );
+}
+
+export default Radium(TrackPlayButton);
 
 const buttonSize = '60';
 

@@ -6,35 +6,6 @@ import ProfileHeaderInfo from "./ProfileHeaderInfo";
 import clone from "lodash.clone";
 import merge from "lodash.merge";
 
-class ProfileHeader extends React.Component {
-    render() {
-        const style = clone(styles.component);
-        if (this.props.banner) {
-            merge(style, {
-                backgroundImage: `url(${this.props.banner})`,
-            });
-        }
-        return (
-            <div style={style}>
-                <div style={styles.padding}>
-                    <ProfileHeaderAvatar
-                        avatar={this.props.avatar}
-                    />
-                    <ProfileHeaderInfo
-                        displayName={this.props.displayName}
-                        firstName={this.props.firstName}
-                        lastName={this.props.lastName}
-                        city={this.props.city}
-                        country={this.props.country}
-                    />
-                </div>
-            </div>
-        );
-    }
-}
-
-export default Radium(ProfileHeader);
-
 ProfileHeader.propTypes = {
     banner: PropTypes.string,
     avatar: PropTypes.string,
@@ -44,6 +15,33 @@ ProfileHeader.propTypes = {
     city: PropTypes.string,
     country: PropTypes.string,
 };
+
+function ProfileHeader(props) {
+    const style = clone(styles.component);
+    if (props.banner) {
+        merge(style, {
+            backgroundImage: `url(${props.banner})`,
+        });
+    }
+    return (
+        <div style={style}>
+            <div style={styles.padding}>
+                <ProfileHeaderAvatar
+                    avatar={props.avatar}
+                />
+                <ProfileHeaderInfo
+                    displayName={props.displayName}
+                    firstName={props.firstName}
+                    lastName={props.lastName}
+                    city={props.city}
+                    country={props.country}
+                />
+            </div>
+        </div>
+    );
+}
+
+export default Radium(ProfileHeader);
 
 const styles = {
     component: {

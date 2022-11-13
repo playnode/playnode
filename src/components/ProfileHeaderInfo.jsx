@@ -1,53 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default class ProfileHeaderInfo extends React.Component {
-    render() {
-
-        const firstName = this.props.firstName;
-        let lastName = this.props.lastName;
-        const city = this.props.city;
-        let country = this.props.country;
-
-        if (lastName && firstName && firstName.length > 0) {
-            lastName = ` ${lastName}`;
-        }
-
-        if (country && city && city.length > 0) {
-            country = `, ${country}`;
-        }
-
-        const line2 = `${firstName?firstName:''}${lastName?lastName:''}`;
-        const line3 = `${city?city:''}${country?country:''}`;
-
-        return (
-            <div style={{
-                float: 'left',
-            }}>
-                <div>
-                    <div style={styles.line1}>
-                        {this.props.displayName}
-                    </div>
-                </div>
-                {line2 &&
-                    <div>
-                        <div style={styles.line}>
-                            {line2}
-                        </div>
-                    </div>
-                }
-                {line3 &&
-                    <div>
-                        <div style={styles.line}>
-                            {line3}
-                        </div>
-                    </div>
-                }
-            </div>
-        );
-    }
-}
-
 ProfileHeaderInfo.propTypes = {
     displayName: PropTypes.string.isRequired,
     firstName: PropTypes.string,
@@ -55,6 +8,50 @@ ProfileHeaderInfo.propTypes = {
     city: PropTypes.string,
     country: PropTypes.string,
 };
+
+export default function ProfileHeaderInfo(props) {
+    const firstName = props.firstName;
+    let lastName = props.lastName;
+    const city = props.city;
+    let country = props.country;
+
+    if (lastName && firstName && firstName.length > 0) {
+        lastName = ` ${lastName}`;
+    }
+
+    if (country && city && city.length > 0) {
+        country = `, ${country}`;
+    }
+
+    const line2 = `${firstName?firstName:''}${lastName?lastName:''}`;
+    const line3 = `${city?city:''}${country?country:''}`;
+
+    return (
+        <div style={{
+            float: 'left',
+        }}>
+            <div>
+                <div style={styles.line1}>
+                    {props.displayName}
+                </div>
+            </div>
+            {line2 &&
+                <div>
+                    <div style={styles.line}>
+                        {line2}
+                    </div>
+                </div>
+            }
+            {line3 &&
+                <div>
+                    <div style={styles.line}>
+                        {line3}
+                    </div>
+                </div>
+            }
+        </div>
+    );
+}
 
 const styles = {
     line1: {

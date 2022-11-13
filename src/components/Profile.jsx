@@ -7,90 +7,6 @@ import ProfileHeader from "./ProfileHeader";
 import TrackList from "./TrackList";
 import PlayState from "./PlayState";
 
-class Profile extends React.Component {
-    render() {
-        const onPlayPause = this.props.onPlayPause;
-        const onSeek = this.props.onSeek;
-        const onWaveform = this.props.onWaveform;
-        return (
-            <div style={styles.component}>
-                <ProfileHeader
-                    banner={this.props.banner}
-                    avatar={this.props.avatar}
-                    displayName={this.props.displayName}
-                    firstName={this.props.firstName}
-                    lastName={this.props.lastName}
-                    city={this.props.city}
-                    country={this.props.country}
-                />
-                <div style={styles.content}>
-                    <div style={styles.side}>
-                        {(this.props.feedUrl || this.props.itunesUrl) &&
-                            <div style={styles.feedLinks}>
-                                {this.props.feedUrl &&
-                                    <a href={this.props.feedUrl}
-                                       target="_blank"><img
-                                       src="images/feed-icon.svg"
-                                       width="34" height="34"/></a>
-                                    }
-                                {this.props.feedUrl && this.props.itunesUrl &&
-                                    <span> &nbsp;</span>
-                                }
-                                {this.props.itunesUrl &&
-                                    <a href={this.props.itunesUrl}
-                                       style={styles.itunes}
-                                       target="_blank"/>
-                                }
-                            </div>
-                        }
-                        {this.props.description &&
-                            <div style={styles.description}>
-                                {this.props.description}
-                            </div>
-                        }
-                        {this.props.infoHtml &&
-                            <div dangerouslySetInnerHTML={{
-                                __html: sanitize(this.props.infoHtml)
-                            }}/>
-                        }
-                        {this.props.links &&
-                            <div style={styles.links}>
-                                <ul>
-                                    {this.props.links.map((link) =>
-                                        <li key={link.href}>
-                                            <a href={link.href}
-                                               target="_blank">{link.title}</a>
-                                        </li>
-                                    )}
-                                </ul>
-                            </div>
-                        }
-                    </div>
-                    <div style={styles.tracks}>
-                        <TrackList
-                            tracks={this.props.tracks}
-                            spotlight={this.props.spotlight}
-                            currentTrack={this.props.currentTrack}
-                            playState={this.props.playState}
-                            onPlayPause={(track) => {
-                                onPlayPause && onPlayPause(track);
-                            }}
-                            onSeek={(track, percent) => {
-                                onSeek && onSeek(track, percent);
-                            }}
-                            onWaveform={(track) => {
-                                onWaveform && onWaveform(track);
-                            }}
-                        />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-export default Radium(Profile);
-
 Profile.propTypes = {
     displayName: PropTypes.string.isRequired,
     tracks: PropTypes.array.isRequired,
@@ -112,6 +28,88 @@ Profile.propTypes = {
     onSeek: PropTypes.func,
     onWaveform: PropTypes.func,
 };
+
+export function Profile(props) {
+    const onPlayPause = props.onPlayPause;
+    const onSeek = props.onSeek;
+    const onWaveform = props.onWaveform;
+    return (
+        <div style={styles.component}>
+            <ProfileHeader
+                banner={props.banner}
+                avatar={props.avatar}
+                displayName={props.displayName}
+                firstName={props.firstName}
+                lastName={props.lastName}
+                city={props.city}
+                country={props.country}
+            />
+            <div style={styles.content}>
+                <div style={styles.side}>
+                    {(props.feedUrl || props.itunesUrl) &&
+                        <div style={styles.feedLinks}>
+                            {props.feedUrl &&
+                                <a href={props.feedUrl}
+                                   target="_blank"><img
+                                    src="images/feed-icon.svg"
+                                    width="34" height="34"/></a>
+                            }
+                            {props.feedUrl && props.itunesUrl &&
+                                <span> &nbsp;</span>
+                            }
+                            {props.itunesUrl &&
+                                <a href={props.itunesUrl}
+                                   style={styles.itunes}
+                                   target="_blank"/>
+                            }
+                        </div>
+                    }
+                    {props.description &&
+                        <div style={styles.description}>
+                            {props.description}
+                        </div>
+                    }
+                    {props.infoHtml &&
+                        <div dangerouslySetInnerHTML={{
+                            __html: sanitize(props.infoHtml)
+                        }}/>
+                    }
+                    {props.links &&
+                        <div style={styles.links}>
+                            <ul>
+                                {props.links.map((link) =>
+                                    <li key={link.href}>
+                                        <a href={link.href}
+                                           target="_blank">{link.title}</a>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                    }
+                </div>
+                <div style={styles.tracks}>
+                    <TrackList
+                        tracks={props.tracks}
+                        spotlight={props.spotlight}
+                        currentTrack={props.currentTrack}
+                        playState={props.playState}
+                        onPlayPause={(track) => {
+                            onPlayPause && onPlayPause(track);
+                        }}
+                        onSeek={(track, percent) => {
+                            onSeek && onSeek(track, percent);
+                        }}
+                        onWaveform={(track) => {
+                            onWaveform && onWaveform(track);
+                        }}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Radium(Profile);
 
 const styles = {
     component: {

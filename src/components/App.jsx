@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import Radium from "radium";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
@@ -7,173 +7,144 @@ import TrackSound from "./TrackSound";
 import Profile from "./Profile";
 import PlayState from "./PlayState";
 
-export default class App extends React.Component {
+App.propTypes = {
+    config: PropTypes.object.isRequired,
+};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            playState: PlayState.Initial,
-            currentTrack: undefined,
-            startPosition: 0,
-        };
-    }
+export default function App(props) {
+    const [playState, setPlayState] = useState(PlayState.Initial);
+    const [currentTrack, setCurrentTrack] = useState(undefined);
+    const [startPosition, setStartPosition] = useState(0);
 
-    render() {
-        return (
-            <Radium.StyleRoot>
-                <Routes>
-                    <Route exact path='/' element={(
-                        <Profile
-                            displayName={this.props.config.displayName}
-                            firstName={this.props.config.firstName}
-                            lastName={this.props.config.lastName}
-                            city={this.props.config.city}
-                            country={this.props.config.country}
-                            avatar={this.props.config.avatar}
-                            banner={this.props.config.banner}
-                            description={this.props.config.description}
-                            infoHtml={this.props.config.infoHtml}
-                            links={this.props.config.links}
-                            itunesUrl={this.props.config.itunesUrl}
-                            feedUrl={this.props.config.feedUrl}
-                            tracks={this.props.config.tracks}
-                            spotlight={this.props.config.spotlight}
-                            currentTrack={this.state.currentTrack}
-                            playState={this.state.playState}
-                            onPlayPause={(track) => {
-                                this.playPause(track);
-                            }}
-                            onSeek={(track, percent) => {
-                                this.seek(track, percent);
-                            }}
-                            onWaveform={(track) => {
-                                console.log({
-                                    artist: track.artist,
-                                    title: track.title,
-                                    duration: track.duration,
-                                }, track.waveform);
-                            }}
-                        />
-                    )}/>
-                    <Route exact path="/stream" element={<div>Stream</div>}/>
-                    <Route exact path="/playlist/:id" element={<div>Playlist: {/*{props.match.params.id}*/}</div>}/>
-                    <Route exact path="/:id" element={<div>Track: {/*{props.match.params.id}*/}</div>}/>
-                </Routes>
-                <KeyHandler
-                    keyEventName={KEYPRESS}
-                    keyValue=" "
-                    onKeyHandle={(e) => {
-                        e.preventDefault();
-                        this.playPauseCurrent();
-                    }}
-                />
-                <KeyHandler
-                    keyValue="ArrowLeft"
-                    onKeyHandle={() => console.log('previous')}
-                />
-                <KeyHandler
-                    keyValue="ArrowRight"
-                    onKeyHandle={() => console.log('next')}
-                />
-                <TrackSound
-                    playState={this.state.playState}
-                    url={this.state.currentTrack && this.state.currentTrack.stream}
-                    startPosition={this.state.startPosition}
-                    onLoading={() => this.setState({
-                        playState: PlayState.Loading,
-                    })}
-                    onCanPlay={(duration) => {
-                        this.state.currentTrack.duration = duration * 1000;
-                        this.setState({
-                            playState: PlayState.Playing,
-                        });
-                    }}
-                    onFinished={() => {
-                        this.state.currentTrack.position = this.state.currentTrack.duration;
-                        this.setState({
-                            playState: PlayState.Finished,
-                            currentTrack: this.state.currentTrack,
-                        });
-                    }}
-                    onError={(e) => console.error('TrackSound.onError', e)}
-                    onProgress={(time) => {
-                        this.state.currentTrack.position = time * 1000;
-                        this.setState({
-                            currentTrack: this.state.currentTrack,
-                        });
-                    }}
-                />
-            </Radium.StyleRoot>
-        );
-    }
-
-    playPauseCurrent() {
-        switch (this.state.playState) {
+    function playPauseCurrent() {
+        switch (playState) {
             case PlayState.Playing:
-                this.setState({
-                    playState: PlayState.Paused,
-                });
+                setPlayState(PlayState.Paused);
                 break;
 
             case PlayState.Paused:
-                this.setState({
-                    playState: PlayState.Playing,
-                });
+                setPlayState(PlayState.Playing);
                 break;
         }
     }
 
-    playPause(track) {
+    function playPause(track) {
         if (!track.stream) {
             return;
         }
 
-        if (this.state.currentTrack && this.state.currentTrack !== track) {
-            this.setState({
-                playState: PlayState.Changing,
-                currentTrack: track,
-                startPosition: track.position,
-            });
+        if (currentTrack && currentTrack !== track) {
+            setPlayState(PlayState.Changing);
+            setCurrentTrack(track);
+            setStartPosition(track.position);
             return;
         }
 
-        switch (this.state.playState) {
+        switch (playState) {
             case PlayState.Initial:
             case PlayState.Finished:
-                this.setState({
-                    playState: PlayState.Loading,
-                    currentTrack: track,
-                    startPosition: track.position,
-                });
+                setPlayState(PlayState.Loading);
+                setCurrentTrack(track);
+                setStartPosition(track.position);
                 break;
             case PlayState.Playing:
-                this.setState({
-                    playState: PlayState.Paused,
-                    currentTrack: track,
-                    startPosition: track.position,
-                });
+                setPlayState(PlayState.Paused);
+                setCurrentTrack(track);
+                setStartPosition(track.position);
                 break;
             case PlayState.Paused:
-                this.setState({
-                    playState: PlayState.Playing,
-                    currentTrack: track,
-                    startPosition: track.position,
-                });
+                setPlayState(PlayState.Playing);
+                setCurrentTrack(track);
+                setStartPosition(track.position);
                 break;
         }
     }
 
-    seek(track, percent) {
-        if (track !== this.state.currentTrack) {
-            this.playPause(track, percent);
+    function seek(track, percent) {
+        if (track !== currentTrack) {
+            playPause(track, percent);
             return;
         }
-        this.setState({
-            startPosition: track.duration * (percent / 100),
-        })
-    }
-}
 
-App.propTypes = {
-    config: PropTypes.object.isRequired,
-};
+        setStartPosition(track.duration * (percent / 100));
+    }
+
+    return (
+        <Radium.StyleRoot>
+            <Routes>
+                <Route exact path='/' element={(
+                    <Profile
+                        displayName={props.config.displayName}
+                        firstName={props.config.firstName}
+                        lastName={props.config.lastName}
+                        city={props.config.city}
+                        country={props.config.country}
+                        avatar={props.config.avatar}
+                        banner={props.config.banner}
+                        description={props.config.description}
+                        infoHtml={props.config.infoHtml}
+                        links={props.config.links}
+                        itunesUrl={props.config.itunesUrl}
+                        feedUrl={props.config.feedUrl}
+                        tracks={props.config.tracks}
+                        spotlight={props.config.spotlight}
+                        currentTrack={currentTrack}
+                        playState={playState}
+                        onPlayPause={(track) => {
+                            playPause(track);
+                        }}
+                        onSeek={(track, percent) => {
+                            seek(track, percent);
+                        }}
+                        onWaveform={(track) => {
+                            console.log({
+                                artist: track.artist,
+                                title: track.title,
+                                duration: track.duration,
+                            }, track.waveform);
+                        }}
+                    />
+                )}/>
+                <Route exact path="/stream" element={<div>Stream</div>}/>
+                <Route exact path="/playlist/:id" element={<div>Playlist: {/*{props.match.params.id}*/}</div>}/>
+                <Route exact path="/:id" element={<div>Track: {/*{props.match.params.id}*/}</div>}/>
+            </Routes>
+            <KeyHandler
+                keyEventName={KEYPRESS}
+                keyValue=" "
+                onKeyHandle={(e) => {
+                    e.preventDefault();
+                    playPauseCurrent();
+                }}
+            />
+            <KeyHandler
+                keyValue="ArrowLeft"
+                onKeyHandle={() => console.log('previous')}
+            />
+            <KeyHandler
+                keyValue="ArrowRight"
+                onKeyHandle={() => console.log('next')}
+            />
+            <TrackSound
+                playState={playState}
+                url={currentTrack && currentTrack.stream}
+                startPosition={startPosition}
+                onLoading={() => setPlayState(PlayState.Loading)}
+                onCanPlay={(duration) => {
+                    currentTrack.duration = duration * 1000;
+                    setPlayState(PlayState.Playing);
+                }}
+                onFinished={() => {
+                    currentTrack.position = currentTrack.duration;
+                    setPlayState(PlayState.Finished);
+                    setCurrentTrack(currentTrack); // TODO: Check if this triggers a state change
+                }}
+                onError={(e) => console.error('TrackSound.onError', e)}
+                onProgress={(time) => {
+                    currentTrack.position = time * 1000;
+                    setCurrentTrack(currentTrack); // TODO: Check if this triggers a state change
+                }}
+            />
+        </Radium.StyleRoot>
+    );
+}

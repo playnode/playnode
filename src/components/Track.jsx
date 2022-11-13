@@ -8,60 +8,6 @@ import TrackTime from "./TrackTime";
 import TrackWaveform from "./TrackWaveform";
 import PlayState from "./PlayState";
 
-export default class Track extends React.Component {
-    render() {
-        const onPlayPause = this.props.onPlayPause;
-        const onSeek = this.props.onSeek;
-        const onWaveform = this.props.onWaveform;
-        return (
-            <div style={styles.component}>
-                <TrackHeader
-                    artist={this.props.artist}
-                    title={this.props.title}
-                    cover={this.props.cover}
-                    path={this.props.path}
-                />
-                <div style={styles.trackBox}>
-                    <div style={styles.buttonBox}>
-                        <div style={styles.time}>
-                            <TrackTime
-                                duration={this.props.duration}
-                                position={this.props.position}
-                            />
-                        </div>
-                        <TrackPlayButton
-                            playState={this.props.playState}
-                            onPlayPause={() => {
-                                onPlayPause && onPlayPause();
-                            }}
-                        />
-                    </div>
-                    <div style={styles.waveformBox}>
-                        <TrackWaveform
-                            playState={this.props.playState}
-                            waveform={this.props.waveform}
-                            stream={this.props.stream}
-                            position={this.props.position}
-                            duration={this.props.duration}
-                            onSeek={(percent) => {
-                                onSeek && onSeek(percent);
-                            }}
-                            onWaveform={(waveform) => {
-                                const duration = Math.floor(this.props.duration);
-                                onWaveform && onWaveform(waveform, duration);
-                            }}
-                        />
-                        <TrackButtonBar
-                            download={this.props.download}
-                            downloadAs={this.props.downloadAs}
-                        />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
 Track.propTypes = {
     artist: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -78,6 +24,58 @@ Track.propTypes = {
     onSeek: PropTypes.func,
     onWaveform: PropTypes.func,
 };
+
+export default function Track(props) {
+    const onPlayPause = props.onPlayPause;
+    const onSeek = props.onSeek;
+    const onWaveform = props.onWaveform;
+    return (
+        <div style={styles.component}>
+            <TrackHeader
+                artist={props.artist}
+                title={props.title}
+                cover={props.cover}
+                path={props.path}
+            />
+            <div style={styles.trackBox}>
+                <div style={styles.buttonBox}>
+                    <div style={styles.time}>
+                        <TrackTime
+                            duration={props.duration}
+                            position={props.position}
+                        />
+                    </div>
+                    <TrackPlayButton
+                        playState={props.playState}
+                        onPlayPause={() => {
+                            onPlayPause && onPlayPause();
+                        }}
+                    />
+                </div>
+                <div style={styles.waveformBox}>
+                    <TrackWaveform
+                        playState={props.playState}
+                        waveform={props.waveform}
+                        stream={props.stream}
+                        position={props.position}
+                        duration={props.duration}
+                        onSeek={(percent) => {
+                            onSeek && onSeek(percent);
+                        }}
+                        onWaveform={(waveform) => {
+                            const duration = Math.floor(props.duration);
+                            onWaveform && onWaveform(waveform, duration);
+                        }}
+                    />
+                    <TrackButtonBar
+                        download={props.download}
+                        downloadAs={props.downloadAs}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
 
 const styles = {
     component: {

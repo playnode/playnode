@@ -10,49 +10,46 @@ Link = Radium(Link);
 
 const showLinks = true;
 
-class TrackHeader extends React.Component {
-    render() {
-
-        const cover = clone(styles.cover);
-        if (this.props.cover) {
-            merge(cover, {
-                backgroundImage: `url(${this.props.cover})`,
-            });
-        }
-
-        return (
-            <div style={styles.component}>
-                {this.props.cover &&
-                    <div style={cover}/>
-                }
-                <div style={styles.info}>
-                    <div style={styles.title}>
-                        {showLinks &&
-                            <Link to={`${this.props.path}`} style={styles.link}>
-                                {this.props.title}
-                            </Link>
-                        }
-                        {!showLinks &&
-                            <span>{this.props.title}</span>
-                        }
-                    </div>
-                    <div style={styles.artist}>
-                        {this.props.artist}
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-export default Radium(TrackHeader);
-
 TrackHeader.propTypes = {
     artist: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     cover: PropTypes.string,
     path: PropTypes.string.isRequired,
 };
+
+function TrackHeader(props) {
+    const cover = clone(styles.cover);
+    if (props.cover) {
+        merge(cover, {
+            backgroundImage: `url(${props.cover})`,
+        });
+    }
+
+    return (
+        <div style={styles.component}>
+            {props.cover &&
+                <div style={cover}/>
+            }
+            <div style={styles.info}>
+                <div style={styles.title}>
+                    {showLinks &&
+                        <Link to={`${props.path}`} style={styles.link}>
+                            {props.title}
+                        </Link>
+                    }
+                    {!showLinks &&
+                        <span>{props.title}</span>
+                    }
+                </div>
+                <div style={styles.artist}>
+                    {props.artist}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Radium(TrackHeader);
 
 const styles = {
     component: {

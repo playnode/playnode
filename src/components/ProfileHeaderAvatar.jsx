@@ -3,21 +3,19 @@ import PropTypes from "prop-types";
 import clone from "lodash.clone";
 import merge from "lodash.merge";
 
-export default class ProfileHeaderAvatar extends React.Component {
-    render() {
-        const style = clone(styles.component);
-        if (this.props.avatar) {
-            merge(style, {
-                backgroundImage: `url(${this.props.avatar})`,
-            });
-        }
-        return <div style={style}/>;
-    }
-}
-
 ProfileHeaderAvatar.propTypes = {
     avatar: PropTypes.string,
 };
+
+export default function ProfileHeaderAvatar(props) {
+    const style = clone(styles.component);
+    if (props.avatar) {
+        merge(style, {
+            backgroundImage: `url(${props.avatar})`,
+        });
+    }
+    return <div style={style}/>;
+}
 
 const styles = {
     component: {
