@@ -4,7 +4,7 @@ import {HashRouter as Router} from "react-router-dom";
 import App from './components/App';
 
 const config = {
-    "displayName": "Playnode Music Website",
+    "displayName": "React Music Website",
     "firstName": "",
     "lastName": "",
     "city": "",
@@ -15,8 +15,8 @@ const config = {
     "infoHtml": "<i>HTML-formatted info</i>",
     "links": [
         {
-            "title": "Playnode.org",
-            "href": "http://playnode.org/"
+            "title": "Source Code",
+            "href": "https://stever.dev/react-music-website/"
         }
     ],
     "itunesUrl": "",

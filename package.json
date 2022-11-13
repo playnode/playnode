@@ -1,5 +1,5 @@
 {
-  "name": "playnode",
+  "name": "react-music-website",
   "private": true,
   "scripts": {
     "quick-start": "npm-run-all build --parallel serve build:watch",
