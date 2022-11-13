@@ -1,12 +1,12 @@
 module.exports = (env, _) => {
+    // noinspection JSUnresolvedVariable
     const isProduction = env && env.production ? env.production : false;
-
     return {
         mode: isProduction ? 'production' : 'development',
         devtool: isProduction ? false : 'source-map',
         output: {
             path: __dirname + '/public/dist',
-            filename: 'playnode.js'
+            filename: 'bundle.js'
         },
         entry: './src/index',
         module: {
@@ -40,7 +40,8 @@ module.exports = (env, _) => {
         },
         performance: {hints: false},
         watchOptions: {},
-        resolve: {},
-        node: {}
+        resolve: {
+            extensions: ['.js', '.jsx']
+        }
     };
 }
