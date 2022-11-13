@@ -8,7 +8,7 @@ module.exports = (env, _) => {
             path: __dirname + '/public/dist',
             filename: 'playnode.js'
         },
-        entry: './src/App',
+        entry: './src/index',
         module: {
             rules: [
                 {

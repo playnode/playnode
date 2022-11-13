@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import Radium from "radium";
 import values from "object.values";
 import PlayState from "./PlayState";
-import PlayIcon from "./assets/circle-play.svg";
-import PauseIcon from "./assets/circle-pause.svg";
-import LoadingIcon from "./assets/circle-loading.svg";
+import PlayIcon from "../assets/circle-play.svg";
+import PauseIcon from "../assets/circle-pause.svg";
+import LoadingIcon from "../assets/circle-loading.svg";
 
 class TrackPlayButton extends React.Component {
     render() {

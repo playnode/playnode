@@ -1,14 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import Radium from "radium";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import TrackSound from "./TrackSound";
 import Profile from "./Profile";
 import PlayState from "./PlayState";
 
-class App extends React.Component {
+export default class App extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,23 +21,23 @@ class App extends React.Component {
     render() {
         return (
             <Radium.StyleRoot>
-                <Switch>
-                    <Route exact path='/' render={(props) => (
+                <Routes>
+                    <Route exact path='/' element={(
                         <Profile
-                            displayName={this.props.data.displayName}
-                            firstName={this.props.data.firstName}
-                            lastName={this.props.data.lastName}
-                            city={this.props.data.city}
-                            country={this.props.data.country}
-                            avatar={this.props.data.avatar}
-                            banner={this.props.data.banner}
-                            description={this.props.data.description}
-                            infoHtml={this.props.data.infoHtml}
-                            links={this.props.data.links}
-                            itunesUrl={this.props.data.itunesUrl}
-                            feedUrl={this.props.data.feedUrl}
-                            tracks={this.props.data.tracks}
-                            spotlight={this.props.data.spotlight}
+                            displayName={this.props.config.displayName}
+                            firstName={this.props.config.firstName}
+                            lastName={this.props.config.lastName}
+                            city={this.props.config.city}
+                            country={this.props.config.country}
+                            avatar={this.props.config.avatar}
+                            banner={this.props.config.banner}
+                            description={this.props.config.description}
+                            infoHtml={this.props.config.infoHtml}
+                            links={this.props.config.links}
+                            itunesUrl={this.props.config.itunesUrl}
+                            feedUrl={this.props.config.feedUrl}
+                            tracks={this.props.config.tracks}
+                            spotlight={this.props.config.spotlight}
                             currentTrack={this.state.currentTrack}
                             playState={this.state.playState}
                             onPlayPause={(track) => {
@@ -56,16 +55,10 @@ class App extends React.Component {
                             }}
                         />
                     )}/>
-                    <Route exact path="/stream" render={(props) => (
-                        <div>Stream</div>
-                    )}/>
-                    <Route exact path="/playlist/:id" render={(props) => (
-                        <div>Playlist: {props.match.params.id}</div>
-                    )}/>
-                    <Route exact path="/:id" render={(props) => (
-                        <div>Track: {props.match.params.id}</div>
-                    )}/>
-                </Switch>
+                    <Route exact path="/stream" element={<div>Stream</div>}/>
+                    <Route exact path="/playlist/:id" element={<div>Playlist: {/*{props.match.params.id}*/}</div>}/>
+                    <Route exact path="/:id" element={<div>Track: {/*{props.match.params.id}*/}</div>}/>
+                </Routes>
                 <KeyHandler
                     keyEventName={KEYPRESS}
                     keyValue=" "
@@ -182,18 +175,5 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-    data: PropTypes.object.isRequired,
+    config: PropTypes.object.isRequired,
 };
-
-const xhr = new XMLHttpRequest();
-xhr.open('GET', 'playnode.json', true);
-xhr.onload = () => {
-    if (xhr.status === 200) {
-        ReactDOM.render(
-            <Router>
-                <App data={JSON.parse(xhr.responseText)}/>
-            </Router>,
-            document.getElementById('root'));
-    }
-};
-xhr.send();
