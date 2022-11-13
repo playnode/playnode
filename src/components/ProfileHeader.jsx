@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Radium from "radium";
 import ProfileHeaderAvatar from "./ProfileHeaderAvatar";
 import ProfileHeaderInfo from "./ProfileHeaderInfo";
 import clone from "lodash.clone";
@@ -33,7 +32,7 @@ class ProfileHeader extends React.Component {
     }
 }
 
-export default Radium(ProfileHeader);
+export default ProfileHeader;
 
 ProfileHeader.propTypes = {
     banner: PropTypes.string,
@@ -55,7 +54,7 @@ const styles = {
     },
     padding: {
         padding: '30px 20px',
-        '@media (min-width: 1080px)': {
+        '@media (minWidth: 1080px)': {
             padding: '30px'
         },
     },
