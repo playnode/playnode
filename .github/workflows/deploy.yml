@@ -15,6 +15,7 @@ jobs:
         run: |
           npm install
           npm run build:production
+          sed -i "s|ver=0|"ver=`date +"%s"`"|g" public/index.html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
