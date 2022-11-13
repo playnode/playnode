@@ -8,9 +8,9 @@
     "build:watch": "run-s clean:all webpack:watch",
     "serve": "webpack serve --config webpack.config.js --open",
     "babel": "babel src --out-dir es5",
-    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack",
-    "webpack:production": "NODE_OPTIONS=--openssl-legacy-provider webpack --env production",
-    "webpack:watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
+    "webpack": "webpack",
+    "webpack:production": "webpack --env production",
+    "webpack:watch": "webpack --watch",
     "clean:all": "trash public/dist es5",
     "clean:es5": "trash es5"
   },
