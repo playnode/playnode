@@ -11,8 +11,8 @@
     "webpack": "webpack",
     "webpack:production": "webpack --env production",
     "webpack:watch": "webpack --watch",
-    "clean:all": "trash public/dist es5",
-    "clean:es5": "trash es5"
+    "clean:all": "rm -rf public/dist es5",
+    "clean:es5": "rm -rf es5"
   },
   "dependencies": {
     "dompurify": "^2.4.1",
