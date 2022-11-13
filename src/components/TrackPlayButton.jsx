@@ -7,6 +7,11 @@ import PlayIcon from "../assets/circle-play.svg";
 import PauseIcon from "../assets/circle-pause.svg";
 import LoadingIcon from "../assets/circle-loading.svg";
 
+TrackPlayButton.propTypes = {
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    onPlayPause: PropTypes.func,
+};
+
 class TrackPlayButton extends React.Component {
     render() {
         const onPlayPause = this.props.onPlayPause;
@@ -40,11 +45,6 @@ class TrackPlayButton extends React.Component {
 }
 
 export default Radium(TrackPlayButton);
-
-TrackPlayButton.propTypes = {
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    onPlayPause: PropTypes.func,
-};
 
 const buttonSize = '60';
 

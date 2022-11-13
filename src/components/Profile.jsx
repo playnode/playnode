@@ -7,6 +7,28 @@ import ProfileHeader from "./ProfileHeader";
 import TrackList from "./TrackList";
 import PlayState from "./PlayState";
 
+Profile.propTypes = {
+    displayName: PropTypes.string.isRequired,
+    tracks: PropTypes.array.isRequired,
+    spotlight: PropTypes.array,
+    banner: PropTypes.string,
+    avatar: PropTypes.string,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+    description: PropTypes.string,
+    feedUrl: PropTypes.string,
+    itunesUrl: PropTypes.string,
+    infoHtml: PropTypes.string,
+    links: PropTypes.array,
+    currentTrack: PropTypes.object,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    onPlayPause: PropTypes.func,
+    onSeek: PropTypes.func,
+    onWaveform: PropTypes.func,
+};
+
 class Profile extends React.Component {
     render() {
         const onPlayPause = this.props.onPlayPause;
@@ -90,28 +112,6 @@ class Profile extends React.Component {
 }
 
 export default Radium(Profile);
-
-Profile.propTypes = {
-    displayName: PropTypes.string.isRequired,
-    tracks: PropTypes.array.isRequired,
-    spotlight: PropTypes.array,
-    banner: PropTypes.string,
-    avatar: PropTypes.string,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    city: PropTypes.string,
-    country: PropTypes.string,
-    description: PropTypes.string,
-    feedUrl: PropTypes.string,
-    itunesUrl: PropTypes.string,
-    infoHtml: PropTypes.string,
-    links: PropTypes.array,
-    currentTrack: PropTypes.object,
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    onPlayPause: PropTypes.func,
-    onSeek: PropTypes.func,
-    onWaveform: PropTypes.func,
-};
 
 const styles = {
     component: {

@@ -6,6 +6,18 @@ import PlayState from "./PlayState";
 const requestAnimationFrame = window.requestAnimationFrame
     || window.webkitRequestAnimationFrame;
 
+TrackSound.propTypes = {
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    url: PropTypes.string,
+    startPosition: PropTypes.number,
+    // volume: PropTypes.number,
+    onLoading: PropTypes.func,
+    onCanPlay: PropTypes.func,
+    onFinished: PropTypes.func,
+    onError: PropTypes.func,
+    onProgress: PropTypes.func,
+};
+
 export default class TrackSound extends React.Component {
 
     render() {
@@ -92,15 +104,3 @@ export default class TrackSound extends React.Component {
         return !this.media || this.media.paused;
     }
 }
-
-TrackSound.propTypes = {
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    url: PropTypes.string,
-    startPosition: PropTypes.number,
-    // volume: PropTypes.number,
-    onLoading: PropTypes.func,
-    onCanPlay: PropTypes.func,
-    onFinished: PropTypes.func,
-    onError: PropTypes.func,
-    onProgress: PropTypes.func,
-};

@@ -8,6 +8,23 @@ import TrackTime from "./TrackTime";
 import TrackWaveform from "./TrackWaveform";
 import PlayState from "./PlayState";
 
+Track.propTypes = {
+    artist: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string,
+    path: PropTypes.string.isRequired,
+    stream: PropTypes.string,
+    download: PropTypes.string,
+    downloadAs: PropTypes.string,
+    duration: PropTypes.number,
+    position: PropTypes.number,
+    waveform: PropTypes.string,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    onPlayPause: PropTypes.func,
+    onSeek: PropTypes.func,
+    onWaveform: PropTypes.func,
+};
+
 export default class Track extends React.Component {
     render() {
         const onPlayPause = this.props.onPlayPause;
@@ -61,23 +78,6 @@ export default class Track extends React.Component {
         );
     }
 }
-
-Track.propTypes = {
-    artist: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string,
-    path: PropTypes.string.isRequired,
-    stream: PropTypes.string,
-    download: PropTypes.string,
-    downloadAs: PropTypes.string,
-    duration: PropTypes.number,
-    position: PropTypes.number,
-    waveform: PropTypes.string,
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    onPlayPause: PropTypes.func,
-    onSeek: PropTypes.func,
-    onWaveform: PropTypes.func,
-};
 
 const styles = {
     component: {

@@ -2,6 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import Radium from "radium";
 
+TrackButtonBar.propTypes = {
+    download: PropTypes.string,
+    downloadAs: PropTypes.string,
+};
+
 class TrackButtonBar extends React.Component {
     render() {
         return (
@@ -21,11 +26,6 @@ class TrackButtonBar extends React.Component {
 }
 
 export default Radium(TrackButtonBar);
-
-TrackButtonBar.propTypes = {
-    download: PropTypes.string,
-    downloadAs: PropTypes.string,
-};
 
 const styles = {
     component: {

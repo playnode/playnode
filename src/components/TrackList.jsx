@@ -5,6 +5,16 @@ import Track from "./Track";
 import values from "object.values";
 import PlayState from "./PlayState";
 
+TrackList.propTypes = {
+    tracks: PropTypes.array.isRequired,
+    spotlight: PropTypes.array,
+    currentTrack: PropTypes.object,
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    onPlayPause: PropTypes.func,
+    onSeek: PropTypes.func,
+    onWaveform: PropTypes.func,
+};
+
 export default class TrackList extends React.Component {
     render() {
         const onPlayPause = this.props.onPlayPause;
@@ -92,16 +102,6 @@ export default class TrackList extends React.Component {
         );
     }
 }
-
-TrackList.propTypes = {
-    tracks: PropTypes.array.isRequired,
-    spotlight: PropTypes.array,
-    currentTrack: PropTypes.object,
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    onPlayPause: PropTypes.func,
-    onSeek: PropTypes.func,
-    onWaveform: PropTypes.func,
-};
 
 const styles = {
     component: {

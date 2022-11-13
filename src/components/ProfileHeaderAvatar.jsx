@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import clone from "lodash.clone";
 import merge from "lodash.merge";
 
+ProfileHeaderAvatar.propTypes = {
+    avatar: PropTypes.string,
+};
+
 export default class ProfileHeaderAvatar extends React.Component {
     render() {
         const style = clone(styles.component);
@@ -14,10 +18,6 @@ export default class ProfileHeaderAvatar extends React.Component {
         return <div style={style}/>;
     }
 }
-
-ProfileHeaderAvatar.propTypes = {
-    avatar: PropTypes.string,
-};
 
 const styles = {
     component: {

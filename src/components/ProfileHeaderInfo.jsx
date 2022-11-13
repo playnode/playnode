@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+ProfileHeaderInfo.propTypes = {
+    displayName: PropTypes.string.isRequired,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+};
+
 export default class ProfileHeaderInfo extends React.Component {
     render() {
 
@@ -47,14 +55,6 @@ export default class ProfileHeaderInfo extends React.Component {
         );
     }
 }
-
-ProfileHeaderInfo.propTypes = {
-    displayName: PropTypes.string.isRequired,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    city: PropTypes.string,
-    country: PropTypes.string,
-};
 
 const styles = {
     line1: {
