@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import Radium from "radium";
-import KeyHandler, { KEYPRESS } from "react-key-handler";
 import { Route, Routes } from "react-router-dom";
 import TrackSound from "./TrackSound";
 import Profile from "./Profile";
@@ -107,22 +106,6 @@ export default function App(props) {
                 <Route exact path="/playlist/:id" element={<div>Playlist: {/*{props.match.params.id}*/}</div>}/>
                 <Route exact path="/:id" element={<div>Track: {/*{props.match.params.id}*/}</div>}/>
             </Routes>
-            <KeyHandler
-                keyEventName={KEYPRESS}
-                keyValue=" "
-                onKeyHandle={(e) => {
-                    e.preventDefault();
-                    playPauseCurrent();
-                }}
-            />
-            <KeyHandler
-                keyValue="ArrowLeft"
-                onKeyHandle={() => console.log('previous')}
-            />
-            <KeyHandler
-                keyValue="ArrowRight"
-                onKeyHandle={() => console.log('next')}
-            />
             <TrackSound
                 playState={playState}
                 url={currentTrack && currentTrack.stream}

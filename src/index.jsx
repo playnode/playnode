@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from "react-dom";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import {HashRouter as Router} from "react-router-dom";
-import App from './components/App';
+import App from "./components/App";
 
 const config = {
     "displayName": "React Music Website",
@@ -45,8 +45,9 @@ const config = {
     ]
 };
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
     <Router>
         <App config={config}/>
-    </Router>,
-    document.getElementById('root'));
+    </Router>
+);
