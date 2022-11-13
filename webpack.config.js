@@ -1,7 +1,18 @@
 const path = require("path");
+const webpack = require("webpack");
+
 module.exports = (env, _) => {
+
     // noinspection JSUnresolvedVariable
     const isProduction = env && env.production ? env.production : false;
+
+    // noinspection JSUnresolvedFunction
+    const plugins = [
+        new webpack.DefinePlugin({
+            STAGING_ENV: JSON.stringify(isProduction ? 'prod' : 'dev'),
+        })
+    ];
+
     return {
         mode: isProduction ? 'production' : 'development',
         devtool: isProduction ? false : 'source-map',
@@ -52,6 +63,7 @@ module.exports = (env, _) => {
                 }
             ]
         },
+        plugins,
         performance: {hints: false},
         watchOptions: {},
         resolve: {
