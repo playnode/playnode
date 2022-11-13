@@ -21,6 +21,7 @@
     "object.values": "^1.1.6",
     "pako": "^2.1.0",
     "prop-types": "^15.8.1",
+    "radium": "^0.26.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-key-handler": "^1.2.0-beta.3",

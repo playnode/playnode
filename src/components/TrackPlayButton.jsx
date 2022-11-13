@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Radium from "radium";
 import values from "object.values";
 import PlayState from "./PlayState";
 import PlayIcon from "../assets/circle-play.svg";
@@ -38,7 +39,7 @@ class TrackPlayButton extends React.Component {
     }
 }
 
-export default TrackPlayButton;
+export default Radium(TrackPlayButton);
 
 TrackPlayButton.propTypes = {
     playState: PropTypes.oneOf(values(PlayState)).isRequired,

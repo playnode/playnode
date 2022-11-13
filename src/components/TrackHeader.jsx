@@ -1,8 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import Radium from "radium";
 import clone from "lodash.clone";
 import merge from "lodash.merge";
+
+// https://github.com/FormidableLabs/radium/tree/master/docs/faq#why-doesnt-radium-work-on-react-routers-link-or-react-bootstraps-button-or-someothercomponent
+let Link = require('react-router-dom').Link;
+Link = Radium(Link);
 
 const showLinks = true;
 
@@ -41,7 +45,7 @@ class TrackHeader extends React.Component {
     }
 }
 
-export default TrackHeader;
+export default Radium(TrackHeader);
 
 TrackHeader.propTypes = {
     artist: PropTypes.string.isRequired,

@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Radium from "radium";
 import KeyHandler, { KEYPRESS } from "react-key-handler";
 import { Route, Routes } from "react-router-dom";
 import TrackSound from "./TrackSound";
@@ -19,7 +20,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <>
+            <Radium.StyleRoot>
                 <Routes>
                     <Route exact path='/' element={(
                         <Profile
@@ -102,7 +103,7 @@ export default class App extends React.Component {
                         });
                     }}
                 />
-            </>
+            </Radium.StyleRoot>
         );
     }
 

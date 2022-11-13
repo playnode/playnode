@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Radium from "radium";
 import values from "object.values";
 import DOMPurify from "dompurify";
 import ProfileHeader from "./ProfileHeader";
@@ -88,7 +89,7 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default Radium(Profile);
 
 Profile.propTypes = {
     displayName: PropTypes.string.isRequired,
@@ -116,10 +117,10 @@ const styles = {
     component: {
         margin: 'auto',
         maxWidth: '960px',
-        '@media (minWidth: 1080px)': {
+        '@media (min-width: 1080px)': {
             maxWidth: '1080px'
         },
-        '@media (minWidth: 1240px)': {
+        '@media (min-width: 1240px)': {
             maxWidth: '1240px'
         },
     },
@@ -130,7 +131,7 @@ const styles = {
     side: {
         padding: '20px',
         fontSize: '0.85em',
-        '@media (minWidth: 900px)': {
+        '@media (min-width: 900px)': {
             float: 'right',
             width: '300px',
         },
@@ -139,7 +140,7 @@ const styles = {
         paddingBottom: '1em',
     },
     tracks: {
-        '@media (minWidth: 900px)': {
+        '@media (min-width: 900px)': {
             marginRight: '320px',
         },
     },

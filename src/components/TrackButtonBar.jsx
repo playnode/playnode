@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Radium from "radium";
 
 class TrackButtonBar extends React.Component {
     render() {
@@ -19,7 +20,7 @@ class TrackButtonBar extends React.Component {
     }
 }
 
-export default TrackButtonBar;
+export default Radium(TrackButtonBar);
 
 TrackButtonBar.propTypes = {
     download: PropTypes.string,
