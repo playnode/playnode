@@ -1,3 +1,4 @@
+const path = require("path");
 module.exports = (env, _) => {
     // noinspection JSUnresolvedVariable
     const isProduction = env && env.production ? env.production : false;
@@ -9,6 +10,19 @@ module.exports = (env, _) => {
             filename: 'bundle.js'
         },
         entry: './src/index',
+        devServer: {
+            historyApiFallback: true,
+            devMiddleware: {
+                writeToDisk: true
+            },
+            static: [
+                {
+                    directory: path.join(__dirname, "public"),
+                    publicPath: "/"
+                }
+            ],
+            port: 8088
+        },
         module: {
             rules: [
                 {

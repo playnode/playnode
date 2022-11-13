@@ -1,6 +1,19 @@
 {
   "name": "playnode",
   "private": true,
+  "scripts": {
+    "quick-start": "npm-run-all build --parallel serve build:watch",
+    "build": "run-s clean:all webpack",
+    "build:production": "run-s clean:all babel webpack:production clean:es5",
+    "build:watch": "run-s clean:all webpack:watch",
+    "serve": "webpack serve --config webpack.config.js --open",
+    "babel": "babel src --out-dir es5",
+    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "webpack:production": "NODE_OPTIONS=--openssl-legacy-provider webpack --env.production",
+    "webpack:watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
+    "clean:all": "trash public/dist es5",
+    "clean:es5": "trash es5"
+  },
   "dependencies": {
     "dompurify": "^2.4.1",
     "lodash.clone": "^4.5.0",
@@ -22,24 +35,11 @@
     "@babel/preset-react": "^7.18.6",
     "babel-loader": "^9.1.0",
     "file-loader": "^6.2.0",
-    "http-server": "^14.1.1",
     "npm-run-all": "^4.1.5",
     "trash-cli": "^5.0.0",
     "webpack": "^5.75.0",
-    "webpack-cli": "^4.10.0"
-  },
-  "scripts": {
-    "quick-start": "npm-run-all build --parallel serve build:watch",
-    "build": "run-s clean:all webpack",
-    "build:production": "run-s clean:all babel webpack:production clean:es5",
-    "build:watch": "run-s clean:all webpack:watch",
-    "serve": "http-server public --port=8088",
-    "babel": "babel src --out-dir es5",
-    "webpack": "NODE_OPTIONS=--openssl-legacy-provider webpack",
-    "webpack:production": "NODE_OPTIONS=--openssl-legacy-provider webpack --env.production",
-    "webpack:watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
-    "clean:all": "trash public/dist es5",
-    "clean:es5": "trash es5"
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "babel": {
     "presets": [
