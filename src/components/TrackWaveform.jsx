@@ -11,20 +11,6 @@ const OfflineAudioContext = window.window.OfflineAudioContext
 
 const height = 68;
 
-TrackWaveform.propTypes = {
-    playState: PropTypes.oneOf(values(PlayState)).isRequired,
-    waveform: PropTypes.string,
-    stream: PropTypes.string,
-    barWidth: PropTypes.number,
-    barGap: PropTypes.number,
-    barColour: PropTypes.string,
-    gapColour: PropTypes.string,
-    position: PropTypes.number,
-    duration: PropTypes.number,
-    onSeek: PropTypes.func,
-    onWaveform: PropTypes.func,
-};
-
 export default class TrackWaveform extends React.Component {
 
     constructor(props) {
@@ -180,6 +166,20 @@ export default class TrackWaveform extends React.Component {
         }
     }
 }
+
+TrackWaveform.propTypes = {
+    playState: PropTypes.oneOf(values(PlayState)).isRequired,
+    waveform: PropTypes.string,
+    stream: PropTypes.string,
+    barWidth: PropTypes.number,
+    barGap: PropTypes.number,
+    barColour: PropTypes.string,
+    gapColour: PropTypes.string,
+    position: PropTypes.number,
+    duration: PropTypes.number,
+    onSeek: PropTypes.func,
+    onWaveform: PropTypes.func,
+};
 
 const styles = {
     component: {

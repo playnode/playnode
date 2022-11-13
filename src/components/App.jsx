@@ -7,10 +7,6 @@ import TrackSound from "./TrackSound";
 import Profile from "./Profile";
 import PlayState from "./PlayState";
 
-App.propTypes = {
-    config: PropTypes.object.isRequired,
-};
-
 export default class App extends React.Component {
 
     constructor(props) {
@@ -177,3 +173,7 @@ export default class App extends React.Component {
         })
     }
 }
+
+App.propTypes = {
+    config: PropTypes.object.isRequired,
+};

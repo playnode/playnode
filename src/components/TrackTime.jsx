@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-TrackTime.propTypes = {
-    duration: PropTypes.number,
-    position: PropTypes.number,
-};
-
 export default class TrackTime extends React.Component {
     render() {
         return (
@@ -21,6 +16,11 @@ export default class TrackTime extends React.Component {
         );
     }
 }
+
+TrackTime.propTypes = {
+    duration: PropTypes.number,
+    position: PropTypes.number,
+};
 
 const styles = {
     element: {

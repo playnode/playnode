@@ -10,13 +10,6 @@ Link = Radium(Link);
 
 const showLinks = true;
 
-TrackHeader.propTypes = {
-    artist: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    cover: PropTypes.string,
-    path: PropTypes.string.isRequired,
-};
-
 class TrackHeader extends React.Component {
     render() {
 
@@ -53,6 +46,13 @@ class TrackHeader extends React.Component {
 }
 
 export default Radium(TrackHeader);
+
+TrackHeader.propTypes = {
+    artist: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    cover: PropTypes.string,
+    path: PropTypes.string.isRequired,
+};
 
 const styles = {
     component: {

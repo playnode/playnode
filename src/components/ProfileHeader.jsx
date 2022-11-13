@@ -6,16 +6,6 @@ import ProfileHeaderInfo from "./ProfileHeaderInfo";
 import clone from "lodash.clone";
 import merge from "lodash.merge";
 
-ProfileHeader.propTypes = {
-    banner: PropTypes.string,
-    avatar: PropTypes.string,
-    displayName: PropTypes.string.isRequired,
-    firstName: PropTypes.string,
-    lastName: PropTypes.string,
-    city: PropTypes.string,
-    country: PropTypes.string,
-};
-
 class ProfileHeader extends React.Component {
     render() {
         const style = clone(styles.component);
@@ -44,6 +34,16 @@ class ProfileHeader extends React.Component {
 }
 
 export default Radium(ProfileHeader);
+
+ProfileHeader.propTypes = {
+    banner: PropTypes.string,
+    avatar: PropTypes.string,
+    displayName: PropTypes.string.isRequired,
+    firstName: PropTypes.string,
+    lastName: PropTypes.string,
+    city: PropTypes.string,
+    country: PropTypes.string,
+};
 
 const styles = {
     component: {
