@@ -15,7 +15,10 @@
     "clean:es5": "rm -rf es5"
   },
   "dependencies": {
+    "@lagunovsky/redux-react-router": "^4.3.0",
+    "@reduxjs/toolkit": "^1.9.0",
     "dompurify": "^2.4.1",
+    "history": "^5.3.0",
     "lodash.clone": "^4.5.0",
     "lodash.merge": "^4.6.2",
     "object.values": "^1.1.6",
@@ -24,8 +27,12 @@
     "radium": "^0.26.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
-    "react-waypoint": "^10.3.0"
+    "react-waypoint": "^10.3.0",
+    "redux": "^4.2.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",

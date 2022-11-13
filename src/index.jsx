@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {HashRouter as Router} from "react-router-dom";
+import {Provider as ReduxProvider} from "react-redux";
+import {ReduxRouter as Router} from "@lagunovsky/redux-react-router";
+import {store, history} from "./redux/store";
 import App from "./components/App";
 
 const config = {
@@ -47,7 +49,9 @@ const config = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Router>
-        <App config={config}/>
-    </Router>
+    <ReduxProvider store={store}>
+        <Router history={history}>
+            <App config={config}/>
+        </Router>
+    </ReduxProvider>
 );
