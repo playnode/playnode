@@ -90,18 +90,16 @@ export default function App(props) {
                         spotlight={props.config.spotlight}
                         currentTrack={currentTrack}
                         playState={playState}
-                        onPlayPause={(track) => {
-                            playPause(track);
-                        }}
-                        onSeek={(track, percent) => {
-                            seek(track, percent);
-                        }}
+                        onPlayPause={(track) => playPause(track)}
+                        onSeek={(track, percent) => seek(track, percent)}
                         onWaveform={(track) => {
+/*
                             console.log({
                                 artist: track.artist,
                                 title: track.title,
                                 duration: track.duration,
                             }, track.waveform);
+*/
                         }}
                     />
                 )}/>
